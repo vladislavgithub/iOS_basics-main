@@ -446,6 +446,266 @@ someArray == [a1, a2, a3] // true
  let differentDigits: Set = [3, 4, 7, 8]
  //При использовании метода intersection(_:) возвращается множество, содержащее значения, общие для двух множеств
  let inter = differentDigits.intersection(oddDigits)
+ */
+// исходный массив
 
+//тернарны оператор
+
+//   по факту замена if else условия (выражение ? первое выражение если не выполняется: второе условие
+
+/*
+ В праздничный день в магазин игрушек приходит покупатель, если у пользователя есть карта клиента то ему в этот день дают 30 процентную скидку, если нет то 15 процентов.
+ Посчитайте сколько заплатит пользователь за игрушку стоимостью 760 рублей, если у него есть карта.
+ */
+
+/*
+ Объявите константу и запишите в нее свое имя.
+ Объявите переменную типа UInt8 и запишите в нее свой возраст.
+ Объявите кортеж и явно определите его тип данных, как (name: String, age: Int).
+ В первый элемент кортежа запишите значение константы с именем.
+ Во второй элемент кортежа запишите значение из переменной с вашим возрастом.
+ 
+ let userName = "Владислав"
+ var userAge: UInt8 = 20
+ var korteg: (name: String, age: Int)
+ korteg.0 = userName
+ korteg.1 = Int(userAge)
+ print(korteg)
+ */
+
+/*
+ Объявите кортеж, способный хранить три значения типа Int16.
+ Одним выражением объявите две константы типа Int и проинициализуйте им произвольные значения.
+ В первые два значения кортежа запишите значения из данных переменных, а в третий их сумму
+ let corteg: (Int16, Int16, Int16)
+ let (one, two) = (16, 32)
+ var tuple = (Int16(one), Int16(two), Int16(one + two))
+ 
+ var someTuple = (myName: "Alex", myAge: 12, "Russia")
+ 
+ var tupleOne = (first: 1, second: 2)
+ var tupleTwo = (3, 4)
+ tupleTwo = tupleOne
+ tupleTwo.0
+ 
+ //Вам даны две целочисленные переменные со значениями 12 и 21. Поменяйте их значения местами без использования буферной переменной и математических операций.
+ var one = 12
+ var two = 21
+ (one, two) = (two, one)
+ 
+ */
+
+/*
+ 1) Создайте кортеж с двумя параметрами: ваш любимый фильм и ваше любимое число. Все элементы кортежа должны быть именованными.
+ 2) Одним выражением запишите каждый элемент кортежа в две константы. Проверьте значения параметров с помощью вывода в области результатов.
+ 3) Создайте псевдоним типа, используемого для первого кортежа, назовите его Man. Создайте второй кортеж типа Man, но описывающий другого человека (с другими значениями). Обратите внимание, что элементы кортежа так же должны иметь имена.
+ 4) Обменяйте значения в кортежах между собой.
+ 5) Создайте новый кортеж, элементами которого будут любимое число из первого кортежа, любимое число из второго кортежа и разница любимых чисел первого и второго кортежей.
+ 
+ //1
+ var tuple: (film:String, number:Int) = ("King of the ring", 21)
+ //2
+ let (const1, const2) = tuple
+ const1 //"King of the ring"
+ const2 //21
+ //3
+ typealias Man = (film:String, number:Int)
+ var tuple2: Man = ("Alice", 777)
+ //4
+ // создаем буферный кортеж
+ var bufTuple = tuple
+ // меняем значения в кортежах
+ tuple = tuple2
+ tuple2 = bufTuple
+ //5
+ var tuple3 = (tuple.number, tuple2.number, tuple.number-tuple2.number)
+ */
+
+
+/*
+Создайте диапазон целых чисел от -100 до 100 и инициализируйте его константе range
+Создайте переменную item типа UInt со значением 21.
+Создайте переменную типа Bool и запишите в нее результат проверки наличия значения переменной item в диапазоне range. Каким образом произвести данную проверку?
+ //1
+ var range = -100...100
+ var item: UInt = 21
+ var contains = range.contains(Int(item)) //true
+*/
+
+/*
+ Создайте диапазон, содержащий все заглавные латинские символы.
+ Какими будут значения методов min() и max() для этого диапазона?
+ Какими будут значения свойств lowerBound и upperBound для этого диапазона?
+ 
+ Array(0...10)
+ Array(arrayLiteral: 1,2,3,4,5,6,7,8,9,10)
+ 
+ /Покажите все известные вам способы создания массива, состоящего из пяти одинаковых значений
+
+ // С помощью литерала массива
+ [1,1,1,1,1]
+ // с помощью спецальных функций
+ Array(repeating: 1, count: 5)
+ Array(arrayLiteral: 1,1,1,1,1)
+
+ */
+/*
+ 1)Создайте массив, состоящий из четырех целочисленных элементов
+
+ 2)Сделайте так, чтобы вместо второго и третьего элементов массива (с индексами 1 и 2) был элемент, содержащий сумму начального и конечного элементов данного массива. После этого в массиве должно остаться 3 элемента.
+
+ 3) Отсортируйте элементы по возрастанию
+ 
+ //1
+ var arr = [1,2,3,4]
+ //2
+ arr.remove(at: 1)
+ arr[1] = arr[0]+arr[2]
+ arr // [1, 5, 4]
+ //3
+ arr.sort() // [1, 4, 5]
+
+ */
+/*
+1) Создайте массив, состоящий из всех целых чисел от 1 до 100
+
+2) Создайте пустой массив типа Array<Int>
+
+3) Проинициализируйте пустому массиву элементы с 25го по 50ый
+
+ var arr = Array(1...100)
+ var arr1: Array<Int> = []
+ arr1 = Array(arr[24...50])
+*/
+
+/*
+ 1) Создайте массив arr из пяти элементов типа Character
+
+ 2) В массив arr вставьте вторым элементом (не вместо второго, а между первым и вторым) символ «z»
+
+ 3) Создайте переменную i типа UInt8 и проинициализируйте ей количество элементов массива arr.
+ 
+ var arr: Array<Character> = ["a", "b", "c", "v", "s"]
+ arr.insert("z", at: 1)
+ var i = UInt8(arr.count)
+ */
+
+/*
+ Каким образом можно получить значение предпоследнего элемента массива независимо от количества элементов в нем.
+ Может ли описанный вами синтаксис привести к ошибке? Если да, то в каком случае?
+ 
+ [1,2,3,4,5,6].last
+ // array - это массив с неизвестным количеством элементов
+ var array =  [1,2,3,4,5,6]
+ Array[array.count-2]
+ // обрати внимание, что из значения свойства count необходимо вычесть 2, а не 1
+ // это связано с тем, что индекс первого элемента массива - 0, а не 1
+ 
+ var arr = [Array<Character>]()
+ arr.append(["a", "b", "c"])
+ arr.append(["d", "e", "f"])
+ arr.remove(at:1)
+ var arr2 = arr.remove(at: 0)
+ print(arr2[0])
+
+
+ var firstArray = [1,2,3,4,5]
+ var secondArray= (firstArray.dropLast()
+ 
+ var firstArray = [1,2,3,4,5]
+ var secondArray: [UInt] = firstArray.dropLast().map() { return UInt($0) }
+ secondArray // [1, 2, 3, 4]
+ type(of: secondArray) // Ar
+
+ // множество с нечетными цифрами
+ let oddDigits: Set = [1, 3, 5, 7, 9]
+ let differentDigits: Set = [3, 4, 7, 8]
+ let evenDigits: Set = [0, 2, 4, 6, 8]
+ let inter = differentDigits.intersection(oddDigits)
+ let exclusive = differentDigits.symmetricDifference(oddDigits)
+ let union = evenDigits.union(oddDigits)
+ let subtract = differentDigits.subtracting(evenDigits)
+ 
+ var mySet2: Set = [13.4, 15.1]
+ print( mySet2.contains( Double(13.4) ) )
+
+ var setOne: Set = [0, 1, 2, 3]
+ var setTwo: Set = [0, 2, 4, 6]
+ var resultSet = setOne.union(setTwo)
+ resultSet.remove(4)
+
+ */
+
+/*
+1) Объявите множество taskSet1, состоящий из всех целочисленных элементов от 1 до 10
+2) Объявите множество taskSet2, состоящий из всех целочисленных элементов от 5 до 15
+3) Создайте множество taskSet3, состоящий из элементов, которые входят и в taskSet1, и в taskSet2
+4) Создайте множество taskSet4, состоящий из элементов, которые не пересекаются в taskSet1 и taskSet2
+5) Запишите в переменную count типа UInt8 количество элементов в массиве taskSet4. Какое значение примет эта переменная?
+ 
+ var taskSet1 = Set(1...10)
+ var taskSet2 = Set(5...15)
+ var taskSet3 = taskSet1.union(taskSet2)
+ var taskSet4 = taskSet1.symmetricDifference(taskSet2)
+ var count = UInt8(taskSet4.count)
+ type(of: count)
+ count
+ 
+ var banedUsers: Set<Int> = [132, 345, 12, 45]
+    // проверка того, забанен ли пользователь
+    banedUsers.contains(132) // true
+*/
+
+
+// Словари (Dictionary)
+
+/*
+ var iPhones = [2007: "iPhone 6s",
+                2010: "iPhone7",
+                2020: "iPhone8",
+                2021: "iPhone10"]
+ print(iPhones)
+
+ let phone = iPhones.removeValue(forKey: 2007)
+ print(phone)
+ iPhones.isEmpty
+*/
+
+
+
+
+/*
+ предмет вес сможет поднять или нет
+ var object = ["ложка": 0.1,
+               "вилка": 0.2,
+               "гантеля": 5,
+               "машина": 1000]
+ let maxWeight = 60.0
+ let checkedObject = "машина"
+ let checkedWeight = object[checkedObject]!
+ let name = "Владислав"
+ checkedWeight <= maxWeight ? print(" \(name), ты молодец, у тебя получилось поднять \(checkedObject)!") : print("\(name), увы, не повезло, поднять \(checkedObject)!")
+
+ */
+
+
+/*
+ Dictionary(dictionaryLiteral: (100, "Сто"), (200, "Двести"), (300, "Триста"))
+ // базовая коллекция кортежей (пар значений)
+ let baseCollection = [(2, 5), (3, 6), (1, 4)]
+ // создание словаря на основе базовой коллекции
+ let newDictionary = Dictionary(uniqueKeysWithValues: baseCollection)
+ newDictionary // [3: 6, 2: 5, 1: 4]
+ 
+ // массив звезд
+ let nearestStarNames = ["Proxima Centauri", "Alpha Centauri A",
+ "Alpha Centauri B"]
+ // массив расстояний до звезд
+ let nearestStarDistances = [4.24, 4.37, 4.37]
+ // получение словаря, содержащего пары значений
+ let starDistanceDict = Dictionary(uniqueKeysWithValues: zip(nearestStarNames,
+                        nearestStarDistances))
+ starDistanceDict // ["Proxima Centauri": 4.24, "Alpha Centauri B": 4.37,
+                      "Alpha Centauri A": 4.37]
 
  */
