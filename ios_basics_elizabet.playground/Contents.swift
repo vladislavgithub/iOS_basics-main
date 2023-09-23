@@ -214,3 +214,238 @@ if wallet == price{
 
  print("Спортсмену присвоин \(rank) разряд, по бегу на дистанцию 100 метров, в катигории \(gender)")
  */
+
+//Глава 4. Последовательности и коллекции
+ 
+/*
+ let rangeInt = 1..<5
+ print( rangeInt)
+
+ // задаем тип данных явно
+ let rangeType:Range<Int> = 1..<10
+ type(of: rangeInt)
+ // тип данных определен автоматически
+ // на основании переданного значения (неявно)
+ let range = 1..<50
+ type(of: range)
+ 
+ 
+ // диапазон с элементами типа String
+ let rangeString:Range<String> = "s"..<"y"
+ type(of: rangeString)
+ // диапазон с элементами типа Character
+ let rangeCharacter:Range<Character> = "s"..<"y"
+ type(of: rangeCharacter)
+ // диапазон с элементами типа Double
+ let rangeDouble:Range<Double> = 1.05..<1.6
+ type(of: rangeDouble)
+ */
+
+/*
+ В качестве начального и конечного значения в любых диапазонах можно исполь- зовать не только конкретные значения, но и параметры (переменные и константы), которым эти значения инициализированы
+ let one = 12
+ var two = 24
+ let range = 12..<24
+ */
+
+
+
+/*
+ // 5.2. Оператор закрытого диапазона
+ let one = 12...23
+ 
+ Данный тип диапазона может быть использован, например, при работе с коллек- циями, когда вы хотите получить все элементы, начиная с N, но размер коллекции при этом неизвестен. В листинге 5.7 приведен пример использования постфиксной формы оператора для создания диапазона и получения элементов.
+ let namber = 3...
+ type( of: namber)
+ var collection = [2 , 3, 4, 5, 6]
+ print( collection[namber] )
+ */
+
+
+// 5.3. Базовые свойства и методы
+
+/*
+ var inrange = 1...10
+ inrange.contains(11)
+ inrange.count
+ //Для определения наличия элемента в диапазоне служит метод contains(_:)
+ 
+ var floatr: ClosedRange<Double> = 1.2..<1.5
+ floatr.isEmpty
+ */
+
+/*
+ 
+ Свойства lowerBound и upperBound позволяют определить значения левой и правой границы, а методы min() и max() — минимальное и максимальное значение, правда, доступны они только при работе с целочисленными значениями (листинг 5.11).
+ 
+ let antInt = 10...25
+ antInt.max()
+ antInt.min()
+ antInt.lowerBound
+ antInt.upperBound
+ antInt.count
+ 
+ 
+ let Range = UInt8(1)...
+ for i in Range{
+     print(Range)
+ }
+ */
+
+/*
+//Хешируемые диапазоны (Hashable)
+let range1 = 1...10
+range1.hashValue
+let range2 = 1..<10
+range2.hashValue
+*/
+
+/*
+ Эквивалентные диапазоны (Equatable)
+ Диапазоны, ограниченные с двух сторон, соответствуют протоколу Equatable, а значит, могут быть проверены на эквивалентность (листинг 5.16).
+ 
+ let range = 1...20
+ let range1 = 1...20
+ range == range1
+ */
+
+/*
+ Сопоставимые диапазоны (Comparable)
+ Все типы диапазонов не являются сопоставимыми, то есть не соответствуют требо- ваниям протокола Comparable. Их нельзя сравнивать с помощью операторов <=, <, > и >=, это приведет к ошибке (листинг 5.17).
+ let range = 1...20
+ let range1 = 1...20
+ range < range1
+*/
+
+
+
+// Глава 6. Массивы (Array)
+/*
+ let arrey = [ "a", "b", "c"]
+ var arrey2 = [ 1, 3, 4]
+ */
+
+/*
+ Создание массива с помощью Array(arrayLiteral:)
+ let newanni = Array(arrayLiteral: 1, 2, 3, 4, 5)
+ */
+
+/*
+ Создание массива с помощью Array(repeating:count:)
+ Array(repeating: 1, count: 10)
+ */
+
+/*
+ Доступ к элементам массива
+ / неизменяемый массив
+ let alphabetArray = ["a", "b", "c"]
+ // изменяемый массив
+ var mutableArray = [2, 4, 8]
+ // доступ к элементам массивов
+ alphabetArray[1] // "b"
+ mutableArray[2] // 8
+ 
+ 
+ // неизменяемый массив
+ let alphabetArray = ["a", "b", "c"]
+ // изменяемый массив
+ var mutableArray = [2, 4, 8]
+ // доступ к элементам массивов
+ mutableArray[1] = 12
+ mutableArray
+*/
+
+/* три константы, которые
+
+/*
+ cтанут элементами массива */
+let a1 = 1
+let a2 = 2
+let a3 = 3
+var someArray = [1, 2, 3]
+someArray == [a1, a2, a3] // true
+ 
+ 
+ Листинг 6.12
+ // создаем три массива
+ let charsOne = ["a", "b", "c"]
+ let charsTwo = ["d", "e", "f"]
+ let charsThree = ["g", "h", "i"]
+ // создаем новый слиянием двух
+ var alphabet = charsOne + charsTwo
+ // сливаем новый массив с третьим
+ alphabet += charsThree
+ alphabet // ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
+ 
+ 
+ //Листинг 6.14
+
+ var arrayOfArrays = [[1,2,3], [4,5,6], [7,8,9]]
+ // получаем вложенный массив
+ arrayOfArrays[2] // [7, 8, 9]
+ // получаем элемент вложенного массива
+ arrayOfArrays[2][1] // 8
+ //Конструкция arrayOfArrays[2] возвращает третий вложенный элемент масси- ва arrayOfArrays, а arrayOfArrays[2][1], использующая два индекса, возвра- щает второй элемент подмассива, содержащегося в третьем элементе массива arrayOfArrays.
+ 
+ 
+ var array = [1, 3, 4, 5, 6]
+ array.insert(100, at: 4)
+ 
+ var numArray = [1, 2, 100, 3, 4, 5, 6]
+ //Листинг 6.22
+ numArray // [1, 2, 100, 3, 4, 5, 6]
+ // удаляем третий элемент массива (с индексом 2)
+ numArray.remove(at: 2) // 100
+ // удаляем первый элемент массива
+ numArray.removeFirst() // 1
+ // удаляем последний элемент массива
+ numArray.removeLast() // 6
+ /* итоговый массив содержит
+   всего четыре элемента */
+ numArray // [2, 3, 4, 5]
+
+ 
+ let moneyArray = [50, 100, 500, 1000, 5000]
+ let randomMoneyElement = moneyArray.randomElement()
+ 
+ 
+ //Листинг 6.29
+ // исходный массив
+ let arrayOfNumbers = Array(1...10)
+ // его тип данных - Array<Int>
+ type(of: arrayOfNumbers) // Array<Int>.Type
+ arrayOfNumbers // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+ // получим часть массива (подмассив)
+ let slice = arrayOfNumbers[4...6]
+ slice // [5, 6, 7]
+ // его тип данных отличается от типа исходного массива
+ type(of: slice) // ArraySlice<Int>.Type
+
+ let arry = [1, 2, 3, 4,]
+ let arryInt : Array<Int> = arry.dropLast()
+ type( of: arryInt)
+ 
+ // создание пустого множества
+ let emptySet = Set<String>()
+ // множество со значениями
+ var setWithValues: Set<String> = ["хлеб", "овощи"]
+ // удаление всех элементов множества
+ setWithValues = []
+ setWithValues // Set([])
+ 
+ let musicType = [ "Pop", "Rok", "Jazz"]
+ musicType.contains("Rap")
+ musicType.contains("Rok")
+
+ 
+ // множество с нечетными цифрами
+ let oddDigits: Set = [1, 3, 5, 7, 9]
+ // множество с четными цифрами
+ let evenDigits: Set = [0, 2, 4, 6, 8]
+ // множество со смешанными цифрами
+ let differentDigits: Set = [3, 4, 7, 8]
+ //При использовании метода intersection(_:) возвращается множество, содержащее значения, общие для двух множеств
+ let inter = differentDigits.intersection(oddDigits)
+
+
+ */
