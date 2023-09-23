@@ -709,3 +709,88 @@ someArray == [a1, a2, a3] // true
                       "Alpha Centauri A": 4.37]
 
  */
+
+
+// 8.2. Тип данных словаря
+/*
+let codeDesc = [200: "success", 300: "warning", 400: "error"]
+print(type(of: codeDesc))
+*/
+//8.3. Взаимодействие с элементами словаря
+/*
+var countryDict = ["RUS": "Россия", "BEL": "Белорусь", "UKR": "Украина"]
+var countryName = countryDict["BEL"]
+countryName
+countryDict["RUS"] = "Российская федерация"
+print(countryDict)
+
+var oldValueOne = countryDict.updateValue("Республика Беларусь", forKey: "BEL")
+// в переменной записано старое измененное значение элемента
+oldValueOne // "Белоруссия"
+var oldValueTwo = countryDict.updateValue("Эстония", forKey: "EST")
+// в переменной записан nil, так как элемента с таким ключом не существует
+oldValueTwo // nil
+
+countryDict["TUR"] = "Турция"
+print(countryDict)
+countryDict["TUR"] = nil
+countryDict.removeValue(forKey: "UKR")
+print(countryDict)
+
+countryDict["SER"]
+print(type(of: countryDict["SER"]))
+ 
+//Пустой словарь
+let emptyDictionary: [String:Int] = [:]
+let anotherEmptyDictionary = Dictionary<String,Int>()
+
+
+var birthYears = [1991: ["John", "Ann", "Vasiliy"], 1993: ["Alex", "Boris"] ]
+birthYears = [:]
+birthYears  // [:]
+
+*/
+
+//8.5. Базовые свойства и методы словарей
+
+/*
+var someDictionary = ["One": 1, "Two": 2, "Three": 3]
+// количество элементов в словаре
+someDictionary.count // 3
+
+var emptyDict: [String:Int] = [:]
+emptyDict.count // 0
+emptyDict.isEmpty // true
+
+// все ключи словаря countryDict
+let keys = countryDict.keys
+type(of: keys) // Dictionary<String, String>.Keys.Type
+keys // Dictionary.Keys(["UKR", "RUS", "EST"])
+
+// все значения словаря countryDict
+let values = countryDict.values
+
+1) Создайте словарь типа Dictionary<Int, String> и наполните его тремя элементами
+2) Запишите в множество все ключи словаря
+3) Запишите в массив все значения словаря
+4) Создайте множество, состоящее из всех значений коллекций из пунктов 2 и 3
+Будьте очень внимательны при решении заданий
+let dictionary: Dictionary<Int, String> = [ 2:"Vladik", 3:"Lesha", 4:"Alekseich"]
+var vil1 = set(dictionary.keys)
+var vil2 = Array(dictionary.values)
+print(vil1)
+
+*/
+
+/*
+1) Создайте словарь типа Dictionary<Int, Array<String>> и наполните его произвольными значениями
+2) Запишите в константу dictElCount количество элементов в словаре
+3) Создайте массив, состоящий из dictElCount одинаковых элементов, значений которых dictElCount. Какой тип данных будет у созданного массива?
+
+let dictionary: Dictionary<Int, Array<String>> = [1: ["Vitaliy", "Vladislav"], 2: ["Sergey", "Alex"]]
+let  dictElCount = dictionary.count
+var  arryElCount = Array(repeating: dictElCount, count: dictElCount)
+print(type(of: arryElCount))
+
+*/
+
