@@ -794,3 +794,39 @@ print(type(of: arryElCount))
 
 */
 
+//Строка — коллекция символов (String)
+
+/*
+ let char0: Character = "\u{E6}"
+ let char: Character = "\u{65}\u{310}"
+ char == char0
+ print(char)
+ //Графем-кластер — это совокупность юникод-скаляров (или кодовых точек), при визуальном представлении выглядящих как один символ.
+ let thumbsUp = "\u{1f44d}"
+ let blackSkin = "\u{1f3fd}"
+ let combine = "\u{1f44d}\u{1f3fd}"
+
+ let cafeSimple = "caf\u{E9}" // "café"
+ let cafeCombine = "cafe\u{301}" // "café"
+ cafeSimple.count // 4
+ cafeCombine.count // 4
+
+ let name = "e\u{301}lastic" // "élastic"
+ let index = name.startIndex
+
+ let firstChar = name[index]
+ firstChar // "é"
+ type(of: firstChar) // Character.Type
+
+ let indexLastChar = cafeSimple.endIndex
+
+ let lastCharIndex = name.index(before: indexLastChar)
+ name[lastCharIndex] // "c"
+
+ let userName = "Владислав"
+ //fo0
+ let userIndex = userName.startIndex
+ let userNameIndex = userName[userIndex]
+
+ */
+
