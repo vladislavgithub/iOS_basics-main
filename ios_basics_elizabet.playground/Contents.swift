@@ -829,4 +829,51 @@ print(type(of: arryElCount))
  let userNameIndex = userName[userIndex]
 
  */
+/*
+// практика - строки
+1) Создайте переменную типа String со значением «Swift»
+2) Создайте константу типа Character с произвольным значением
+3) Создайте массив в соответсвии со следующими требованиями:
+— количество элементов должно соответствовать количеству символов
+— значения элементов должны быть такими же, как у константы из пункта 2
+— тип массива должен быть Array<String>
+4) Проиницилизируйте значение константы из пункта 2 в переменную из пункта 1
+ //1
+ var name:String = "Swift"
+ //2
+ let userName:Character = "S"
+ //3
+ var arry = Array(repeating: String(userName), count: name.count)
+ arry
+ (type(of: arry))
+ name = String(userName)
+
+ 1) Создайте константу со строковым значением "JonhWick"
+ 2) Получите индекс первого символа строки.
+ Используя полученный индекс выведите на консоль первый символ строки из пункта 1
+ 3) Одним выражением получите индекс последнего символа строки из пункта 1
+ Используя полученный индекс выведите на консоль последний символ строки из пункта 1
+ 4) Запишите в новую константу первые четыре символа из строки "БабаЯга"
+ Какой тип данных будет у созданной константы
+ 
+ var name = "JonhWick"
+ var nameIndex = name.startIndex
+ print(name[nameIndex])
+ let lastIndex = name.index(before:name.endIndex)
+ print(name[lastIndex])
+ let tmp_str = "БабаЯга"
+ let tmp_firstIndex = tmp_str.startIndex
+ let tmp_fourthIndex = tmp_str.index(tmp_firstIndex, offsetBy: 4)
+ let newStr = tmp_str[tmp_firstIndex...tmp_fourthIndex]
+ print(type(of: newStr))
+ 
+ Самостоятельно в сети Интернет найдите кодовые точки для Unicode-символов «шахматные фигуры», после чего создайте два множества типа Set<Character>, состоящие из данных символов.
+ Первое множество должно содержать все фигуры черного цвета, а второе — белого.
+ 
+ let set: Set<Character> = ["\u{2654}","\u{2655}","\u{2656}", "\u{2657}", "\u{2658}", "\u{2659}"]
+ let chessBlack: Set<Character> = ["\u{265A}", "\u{265B}", "\u{265C}", "\u{265D}", "\u{265E}", "\u{265F}"]
+ 
+ */
+
+
 
