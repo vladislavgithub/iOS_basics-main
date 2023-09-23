@@ -829,4 +829,236 @@ print(type(of: arryElCount))
  let userNameIndex = userName[userIndex]
 
  */
+/*
+// практика - строки
+1) Создайте переменную типа String со значением «Swift»
+2) Создайте константу типа Character с произвольным значением
+3) Создайте массив в соответсвии со следующими требованиями:
+— количество элементов должно соответствовать количеству символов
+— значения элементов должны быть такими же, как у константы из пункта 2
+— тип массива должен быть Array<String>
+4) Проиницилизируйте значение константы из пункта 2 в переменную из пункта 1
+ //1
+ var name:String = "Swift"
+ //2
+ let userName:Character = "S"
+ //3
+ var arry = Array(repeating: String(userName), count: name.count)
+ arry
+ (type(of: arry))
+ name = String(userName)
+
+ 1) Создайте константу со строковым значением "JonhWick"
+ 2) Получите индекс первого символа строки.
+ Используя полученный индекс выведите на консоль первый символ строки из пункта 1
+ 3) Одним выражением получите индекс последнего символа строки из пункта 1
+ Используя полученный индекс выведите на консоль последний символ строки из пункта 1
+ 4) Запишите в новую константу первые четыре символа из строки "БабаЯга"
+ Какой тип данных будет у созданной константы
+ 
+ var name = "JonhWick"
+ var nameIndex = name.startIndex
+ print(name[nameIndex])
+ let lastIndex = name.index(before:name.endIndex)
+ print(name[lastIndex])
+ let tmp_str = "БабаЯга"
+ let tmp_firstIndex = tmp_str.startIndex
+ let tmp_fourthIndex = tmp_str.index(tmp_firstIndex, offsetBy: 4)
+ let newStr = tmp_str[tmp_firstIndex...tmp_fourthIndex]
+ print(type(of: newStr))
+ 
+ Самостоятельно в сети Интернет найдите кодовые точки для Unicode-символов «шахматные фигуры», после чего создайте два множества типа Set<Character>, состоящие из данных символов.
+ Первое множество должно содержать все фигуры черного цвета, а второе — белого.
+ 
+ let set: Set<Character> = ["\u{2654}","\u{2655}","\u{2656}", "\u{2657}", "\u{2658}", "\u{2659}"]
+ let chessBlack: Set<Character> = ["\u{265A}", "\u{265B}", "\u{265C}", "\u{265D}", "\u{265E}", "\u{265F}"]
+ 
+ */
+
+/*
+ Часть III
+ ОСНОВНЫЕ ВОЗМОЖНОСТИ SWIFT
+ 
+ Глава 10. Операторы управления
+ 
+ Утверждения
+ 
+ var dragonAge0 = 230
+ assert( dragonAge0 <= 235, strName+strEmpty+strOld )
+ assert( dragonAge0 >= 225, strName+strEmpty+strYoung )
+ //в качестве второго входного аргумента функции assert(_:_:) передана не текстовая строка, а выражение, которое возвращает значение типа String (происходит конкатенация строк).
+ print("Программа успешно завершила работу")
+
+ let strName = "Дракон"
+ let strYoung = "молод"
+ let strOld = "cтар"
+ let strEmpty = " "
+
+ var dragonAge = 220
+ assert( dragonAge <= 235, strName+strEmpty+strOld )
+ assert( dragonAge >= 221, strName+strEmpty+strYoung )
+ print("Программа успешно завершила свою работу")
+
+ 10.2. Оператор условия if
+ 
+ let userName = "Vladislav"
+ if userName == "Vladislav" {
+     print("Hello,\(userName)")
+ }else{
+     print("Вы не Vladislav")
+ }
+
+ let logicVar = true
+ if logicVar == true {
+     print("Переменная истина!")
+ }
+
+ let logicVars = false
+ // полная форма проверки на отрицание
+ if logicVars == false{
+     print("Переменная ложна")
+ }
+ // сокращенная форма проверки на отрицание
+ if !logicVars {
+     print("Переменная вновь ложная")
+ }
+
+ Стандартный синтаксис оператора if
+ 
+ let adminName = "Vladislav"
+
+ if adminName ==  "Vladislav"{
+     print("Привет, администратор!")
+ }else{
+     print("Привет, пользователь")
+ }
+ 
+ // переменная типа Bool
+ var logicVar = false
+ // проверка значения переменной
+ if logicVar {
+     print("Переменная logicVar истинна")
+ } else {
+     print("Переменная logicVar ложна")
+ }
+ 
+ let a = 200
+ let b = 210
+ if a+b > 400{
+     print("сумма больше 400")
+ }else{
+     print("сумма меньше 400")
+ }
+
+ if ferstLogik || secondLogik {
+     print ("одна или две переменнык истины")
+ }else{
+     print ("Одна или две переменнык ложны")
+ }
+
+ var ferstLogik = true
+ var secondLogik = false
+ if ferstLogik || secondLogik {
+     if ferstLogik && secondLogik{
+         print ("переменнык истины")
+     }else{
+         print ("одна ложна")
+     }
+ }else{
+     print("обе ложные")
+ }
+ 
+ //Расширенный синтаксис оператора if
+
+ let userName = "Vladislav"
+ if userName == "Vladislav"{
+     print ("Привет, администратор")
+ }else if userName == "Алксеич"{
+     print("Привет, модератор")
+ }else if userName == "Виталич"{
+     print("Привет, редактор")
+ }else{
+     print("Привет, пользователь")
+ }
+ 
+ let firstLogicVar = true
+ let secondLogicVar = true
+ if firstLogicVar && secondLogicVar {
+     print("Обе переменные истины")
+ }else if firstLogicVar || secondLogicVar{
+     print("Одна из переменных истина")
+ }else {
+     print("Oбе переменные ложны")
+ }
+
+ */
+
+/*
+ Предположим, что вы сдаете в аренду квартиры в жилом доме. Стоимость аренды, которую платит каждый жилец, зависит от общего количества жильцов:
+ Если жильцов менее 5 — стоимость аренды жилья равна 1000 рублей с чело- века в день.
+ Если жильцов от 5 до 7 — стоимость аренды равна 800 рублям с человека в день.
+ Если жильцов более 7 — стоимость аренды равна 500 рублям с человека в день.
+ 
+ var kolvo = 3
+ var price = 0
+ if kolvo < 5{
+     price = 1000
+ }else if kolvo >= 5 && kolvo <= 7{
+     price = 800
+ }else{
+     price = 500
+ }
+ var allprice = price * kolvo
+ print (allprice)
+ 
+ решение с использованием contains(_:)
+ if (..<5).contains(tenantCount) {
+     rentPrice = 1000
+ } else if (5...7).contains(tenantCount) {
+      rentPrice = 800
+ } else if (8...).contains(tenantCount) {
+     rentPrice = 500
+ }
+ 
+ //    Тернарный оператор условия
+ 
+ let x = 1001
+ let y = ( x > 100 ? 100 : 50)
+ 
+ let a = 1
+ let b = 2
+ // сравнение констант
+ a <= b ? print("A меньше или равно B") : print("A больше B")
+
+ // переменная типа Int
+ var height = 180
+ // переменная типа Bool
+ var isHeader = true
+ // переменная типа Bool
+ let rowHeight = height + (isHeader ? 20 : 10 )
+ rowHeight
+ 
+ let a = Int.random(in: 1...100)
+      let b = Int.random(in: 1...100)
+      // вариант 1 (с И)
+      if a > 50 && b > 50 {
+          print("a and b > 50")
+      }
+      // вариант 2 (c запятой)
+      if a > 50, b > 50 {
+          print("a and b > 50")
+      }
+
+ При этом использование запятой имеет несколько особенностей:
+ • Вычисление значения выражений происходит по порядку, и если одно из выражений не
+ истинно (false), то последующие подвыражения вычисляться не будут.
+ • Результаты вычисления каждого подвыражения могут быть использованы в последующих
+ подвыражениях.
+ В следующем примере используются опционалы, изучению которых будет посвящена следующая глава. В нем результаты вычислений первого и второго подвыражений используются в третьем.
+      if let a = Int("43"), let b = Int("45"), a < b {
+          print("a < b")
+      }
+ 
+ */
+
 
