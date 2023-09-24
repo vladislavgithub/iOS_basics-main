@@ -1061,4 +1061,96 @@ print(type(of: arryElCount))
  
  */
 
+//Оператор ветвления switch
+
+/*
+ //Оператор ветвления switch
+ 
+ let userMark = 4
+ if userMark == 1{
+     print("Единица на экзамене! Это ужастно.")
+ }else if userMark == 2{
+     print("Останештся на второй год")
+ }else if userMark == 3{
+     print("Ты плохо учил материал в этом году")
+ }else if userMark == 4{
+     print("Неплохо, но могло быть лучше")
+ }else if userMark == 5{
+     print("Молодец, бесплатное место в институте")
+ }else{
+     print("Данные некоректны")
+ }
+
+ let userMark = 4
+ switch userMark{
+ case 1,2:
+     print("экзамен не сдан")
+ case 3:
+     print("Нкобходимо выполнить дополнительное задание")
+ case 4,5:
+     print("Экзамен сдан")
+ default:
+     print("Указана некорректная оценка")
+ }
+ 
+ let userMark = 4
+ //переменная для хранения собщения
+ let message: String
+
+ switch userMark{
+ case 1:
+     message = "Единица на экзамене! Это ужасно!"
+ case 2:
+     message = "С двойкой ты останешься на второй год!"
+ case 3:
+         message = "Ты плохо учил материал в этом году!"
+ case 4:
+         message = "Неплохо, но могло быть и лучше"
+ case 5:
+         message = "Бесплатное место в университете тебе обеспечено!"
+ default:
+     message = "Переданы некорректные данные об оценке"
+ }
+ print(message)
+
+ //Диапазоны в операторе switch
+
+ let userMark = 4
+ switch userMark {
+ case 1..<3:
+     print("Экзамен не сдан")
+ case 3:
+     print("Требуется дополнительное решение")
+ case 4...5:
+     print("Экзамен сдан!")
+ default:
+     assert(false, "Указана некоректная оценка")
+ }
+ 
+ //Кортежи в операторе switch
+ 
+ let answer: (code: Int, message: String) = (code: 404, message: "Page not found")
+
+ switch answer{
+ case (100..<400, _):
+     print(answer.message)
+ case (400..<500, _):
+     print(false, answer.message)
+ default:
+     print("Сообщение некорректно")
+ }
+ 
+ let dragonCharacteristics: (color: String, weight: Float) = ("красный", 1.4)
+ switch dragonCharacteristics {
+ case ("зеленый", 0..<2):
+     print("Вольтер № 1")
+ case ("красный", 0..<2):
+     print("Вольтер № 2")
+ case ("зелёный", 2...), ("красный", 2...):
+     print("Вольтер № 3")
+ default:
+     print("Дракон не может принят в стаю")
+ }
+ */
+
 
