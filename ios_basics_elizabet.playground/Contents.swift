@@ -1336,6 +1336,124 @@ print(type(of: arryElCount))
      print ("Повторяющая строка")
  }
 
+ При итерации по элементам словаря (Dictionary) можно создать отдельные свя- занные параметры для ключей и значений элементов
+
+ var countriesAndBlocks = [ "Россия": "СНГ", "Франция": "ЕС"]
+ for ( contriName, orgName) in countriesAndBlocks {
+     print("Страна - \(contriName) вступила  \(orgName)")
+ }
+ 
+ Если требуется получать только ключи или только значения элементов, то можно вновь воспользоваться нижним подчеркиванием
+ 
+ var countriesAndBlocks = [ "Россия": "СНГ", "Франция": "ЕС"]
+ for ( contriName, _) in countriesAndBlocks {
+     print("Страна - \(contriName) ")
+ }
+ for ( _, orgName) in countriesAndBlocks {
+     print("Организация - \(orgName) ")
+}
+ 
+ Помимо этого, в случае, если требуется получить последовательность, состоящую только из ключей или значений словаря, можно воспользоваться свойствами keys и values — и передать результат их работы в оператор for
+ 
+ var countriesAndBlocks = ["Россия": "ЕАЭС", "Франция": "ЕС"]
+ for keyName in countriesAndBlocks.keys {
+     print("страна - \(keyName)")
+ }
+ for valuesName in countriesAndBlocks.values {
+     print("организация  - \(valuesName)")
+ }
+ 
+ Если при работе с массивом для каждого элемента помимо значения требуется получить и индекс, то можно воспользоваться методом enumerated(), возвращающим последовательность кортежей, где первый элемент — индекс, а второй — значение
+ 
+ print ("Несколько фактов обо мне:")
+ let myMusikStyles = ["Rosk", "Jazz", "Pop"]
+ for (index, musikName) in myMusikStyles.enumerated(){
+     print("\(index+1). Я люблю: \(musikName)")
+ }
+ 
+ 
+ 
+ Предположим, что перед вами стоит задача обработать все числа от 1 до 10, иду- щие с шагом 3 (массив значений 1, 4, 7, 10). В этом случае вы можете «руками» создать коллекцию с необходимыми элементами и передать ее в конструкцию
+ 
+
+ let intNamber = [1, 4, 7, 10]
+ for element in intNamber {
+     print(element)
+ }
+ 
+ //stride(from:through:by:)
+ 
+ for i in stride(from: 1, through: 10, by: 3){
+     print(i)
+ }
+ 
+ stride(from:to:by:) имеет лишь одно отличие — вместо входного па- раметра through используется to, который исключает указанное в нем значение из последовательности
+ 
+ for i in stride(from: 1, to: 10, by: 3){
+     print(i)
+ }
+
+ приведен пример вычисления суммы всех нечетных чисел от 1 до 1000 с помощью функции stride(from:through:by:)
+ 
+ var result = 0
+ for i in stride( from: 1, through: 1000, by: 2 ){
+     result += i
+ }
+ result
+
+Использование where в конструкции for-in
+ 
+ var result = 0
+ for i in 1...10 where i % 2 == 0{
+     result += i
+ }
+ result
+
+
+ Многомерные коллекции в конструкции for-in
+ // словарь с результатами игр
+ let resultsOfGames = ["Red Wings": ["2:1","2:3"],
+ "Capitals": ["3:6","5:5"],"Penguins": ["3:3","1:2"]]
+ // обработка словаря
+ for (teamName, results) in resultsOfGames {
+     // обработка массива результатов игр
+     for oneResult in results {
+         print("Игра с \(teamName)  — \(oneResult)")
+     }
+ }
+
+ Использование continue в конструкции for-in
+ 
+ 
+ import Foundation
+ for i in 1... {
+     let randNum = Int(arc4random_uniform(100))
+     if randNum == 5 {
+         print("Итерация номер \(i)")
+         break
+     }
+ }
+
+ 
+ for i in 1... {
+     let random = Array<Int>(0...100).randomElement()
+     if random == 5 {
+         print("Итерация номер \(i)")
+         break
+     }
+ }
+ 
+ //Метка
+
+ mainloop: for i in 1...5 {
+     for y in 1...5{
+         if y == 4 && i == 2 {
+             break mainloop
+         }
+         print("\(i) - \(y)")
+     }
+ }
+ 
  */
 
 
