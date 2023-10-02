@@ -1151,6 +1151,191 @@ print(type(of: arryElCount))
  default:
      print("Дракон не может принят в стаю")
  }
+ 
+ var dragonsConst = 3
+ let dragonCharacteristics: (color: String, weight: Float) = ("красный", 1.4)
+ switch dragonCharacteristics {
+ case ("зеленый", 0..<2):
+     print("Вольте № 1")
+ case ("красный", 0..<2):
+     print("Вольтер № 2")
+ case ("зеленый", 2...) where dragonsConst < 5,
+      ("красный", 2...) where dragonsConst < 5:
+     print("Вольтер № 3")
+ default:
+     print("Дракон не может быть принят в стаю")
+ }
+ 
+ 
+ switch dragonCharacteristics{
+ case ("зеленый", 0..<2):
+     print("Вольтер №1")
+ case ("красный", 0..<2):
+     print("Вольтер №2")
+ case ("зеленый", 2...) where
+     dragonCharacteristics.weight.truncatingRemainder(dividingBy: 1) == 0
+     && dragonsConst < 5,
+    ("красный", 2...) where
+     dragonCharacteristics.weight.truncatingRemainder(dividingBy: 1) == 0
+     && dragonsConst < 5:
+     print("Вольтер 3 ")
+ default: break
+ 
+ 
+ var dragonsCount = 4
+ let dragonCharacteristics: (color: String, weight: Float) = ("зеленый", 3)
+ switch dragonCharacteristics {
+ case ("зеленый", 0..<2 ):
+     print("Вольер No 1")
+ case ("красный", 0..<2 ):
+     print("Вольер № 2")
+ case ("зеленый", let weight) where
+     weight > 2
+     && weight.truncatingRemainder(dividingBy: 1) == 0
+     && dragonsCount < 5:
+     print("Вольтер № 3. Вес дракона \(weight) тонны")
+ default:
+     print("Дракон не может принят в строй!")
+ }
+ 
+ // оператор where
+
+
+
+ var dragons = 4
+ let dragonCharacteristik: ( color: String, weight: Float) = ("зеленый", 4)
+ switch dragonCharacteristik{
+ case ("зеленый", 0..<2):
+     print("V1")
+ case let (color, weight):
+     ( color == "зеленый" || color == "красный")
+     && weight.truncatingRemainder(dividingBy: 1) == 0
+     && weight < 5
+     print("v2, \(weight)")
+ }
+ 
+ let someInt = 12
+ switch someInt {
+ case 1...:
+     print( "Больше 0" )
+ case ..<0:
+     print( "Меньше 0" )
+ default:
+ break }
+
+ //Ключевое слово fallthrough
+
+ let level: Character = "Б"
+ // определение уровня готовности
+ switch level {
+      case "А":
+         print("Выключить все электрические приборы ")
+         fallthrough
+     case "Б":
+         print("Закрыть входные двери и окна ")
+         fallthrough
+     case "В":
+         print("Соблюдать спокойствие")
+     default:
+         break
+ }
+
+ let level:Character = "B"
+ switch level{
+ case "A":
+     print("В")
+     fallthrough
+ case "B":
+     print("v")
+     fallthrough
+ case "C":
+     print("c")
+ default:
+     break
+ }
+ 
+ var i = 1
+ var resultSum = 0
+ while i <= 10 {
+     resultSum += 1
+     i += 1
+ }
+ resultSum
+
+
+ // Операторы повторения while и repeat while
+
+ var y = 1
+ var rusultSumm = 0
+ repeat {
+     rusultSumm += y
+     y += 1
+ } while y < 10
+ rusultSumm
+ y
+ 
+ var x = 0
+ var sum = 0
+ while x <= 10{
+     x += 1
+     if x % 2 == 1{
+         continue
+     }
+     sum += x
+ }
+ sum
+ 
+ 
+ 
+ //Использование оператора break
+
+ let lastNum = 54
+ var currentNum = 1
+ var sumOfInts = 0
+  while currentNum <= lastNum {
+     sumOfInts += currentNum
+     if sumOfInts > 450 {
+         print("Хранилище заполнено. Последнее обработанное число - \(currentNum)")
+         break
+ }
+     currentNum += 1
+ }
+
+ 
+ //Оператор повторения for
+
+ // массив целых чисел
+ let numArray: Array<Int> = [1, 2, 3, 4, 5]
+ // в данной переменной будет храниться
+ // сумма элементов массива numArray
+ var result: Int = 0
+ // цикл подсчета суммы
+ for number in numArray {
+     result += number
+ }
+ result // 15
+
+
+ // внешняя переменная
+ var myChar = "a"
+ // внешняя константа
+ let myString = "Swift"
+ // цикл использует связанный параметр с именем,
+ // уже используемым глобальной переменной
+ for myChar in myString {
+     // локальная константа
+     // вне цикла уже существует константа с таким именем
+     let myString = "Char is"
+     print("\(myString) \(myChar)")
+ }
+ myChar // "a"
+ myString // Swift
+
+ 
+ for _ in 1...3{
+     print ("Повторяющая строка")
+ }
+
  */
 
 
