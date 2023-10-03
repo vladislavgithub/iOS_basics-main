@@ -1728,6 +1728,58 @@ print(type(of: arryElCount))
 
 */
 
+                                        //Глава 11. Опциональные типы данных
+/*
+let possibleString = "1945"
+let convertPossibleString = Int(possibleString) // 1945
 
+let unpossibleString = "Одна тысяча сто десять"
+let convertUnpossibleString = Int(unpossibleString) // nil
+
+
+type(of: convertPossibleString)
+type(of: convertUnpossibleString)
+
+let x1 = Int("12")
+     type(of: x1) // Optional<Int>.Type
+     let x2 = Int(43.2)
+     type(of: x2) // Int.Type
+ 
+ // Полная форма записи:
+ // Optional<T>
+ // Краткая форма записи:
+ // T?
+ // T: Any — наименование типа данных, на котором основан опционал.
+
+ 
+ пример объявления переменной опционального типа, основанного на Character.
+ let optionalChar: Optional<Character> = "a"
+ 
+тип Optional<Int> может быть переписан в Int?, Optional<String> в String?
+ var xCoordinate: Int? = 12
+ xCoordinate // 12
+ xCoordinate = nil
+ xCoordinate // nil
+
+ var someOptional: Bool? // nil
+ 
+ 
+ // опциональная переменная с установленным значением
+ var optionalVar = Optional("stringValue") // "stringValue"
+ // уничтожаем значение опциональной переменной
+ optionalVar = nil // nil
+ type(of: optionalVar) // Optional<String>.Type
+ 
+ 
+                                                Опционалы в кортежах
+ 
+ var tuple: (code: Int, message: String)? = nil
+ tuple = (404, "Page not found") // (code 404, message "Page not found")
+ В этом примере опциональный тип основан на типе кортежа (Int, String)
+ 
+ let tupleWithoptelements: (Int? ,Int) = (nil, 10)
+ tupleWithoptelements.0
+ tupleWithoptelements.1
+*/
 
 
