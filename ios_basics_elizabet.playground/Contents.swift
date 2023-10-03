@@ -1783,3 +1783,94 @@ let x1 = Int("12")
 */
 
 
+/*
+                                            Извлечение опционального значения
+ 
+ Выделяют три способа извлечения опционального значения:
+    принудительное извлечение;
+    косвенное извлечение;
+    операция объединения с nil
+ 
+                                            Принудительное извлечение значения
+ var optVar: Int? = 12
+ var intVar = 34
+ let result = optVar! + 34 // 46
+ // проверяем тип данных извлеченного значения
+ type(of: optVar!) // Int.Type
+
+ let optString: String? = "Vasiliy Usov"
+ let unwrapperString = optString!
+ print( "My name is \(unwrapperString)" )
+
+                                            Косвенное извлечение значения
+ 
+ 
+ Если вы уверены, что в момент проведения операции с опционалом в нем всегда будет значение (не nil), то при явном указании типа данных знак вопроса может быть заменен на знак восклицания.
+ 
+ var wrapInt: Double! = 3.14
+ // сложение со значением базового типа не вызовет ошибок
+ // при этом не требуется использовать принудительное извлечение
+ wrapInt + 0.12 // 3.26
+
+                                        Проверка наличия значения в опционале
+ 
+ 
+ let optOne: UInt? = nil
+ let optTwo: UInt? = 32
+ optOne != nil // false
+ optTwo != nil // true
+
+ 
+ var fiveMarkCount: Int? = 8
+ var allCakesCount = 0;
+ // определение наличия значения
+ if fiveMarkCount != nil {
+     // количество пирожных за каждую пятерку
+     let  cakeForEachFiveMark = 2
+     // общее количество пирожных
+     allCakesCount = cakeForEachFiveMark * fiveMarkCount!
+ }
+ allCakesCount // 16
+
+                                                    Опциональное связывание
+ 
+ let myCouns:Int? = 8
+ if let mark = myCouns{
+     print("Количество оценок: \(mark)")
+ }
+
+ var pointX: Int? = 10
+ var pointY: Int? = 3
+ if let x = pointX, let y = pointY {
+    print("Точка установлена на плоскости")
+ }
+ 
+ let coinsInNewChest = "140"
+ var allCoinsCount = 1301
+ if let coins = Int(coinsInNewChest){
+     allCoinsCount += coins
+ }else{
+     print("У нового дракона отсутствует золото")
+ }
+ 
+ 
+                                                Оператор объединения с nil
+ 
+ let optionalInt: Int? = 20
+ var mustHaveResult = optionalInt ?? 0 // 20
+ 
+ 
+ let optionalInt: Int? = 20
+ var mustHaveResult: Int = 0
+ if let unwrapped = optionalInt {
+     mustHaveResult = unwrapped
+ } else {
+     mustHaveResult = 0
+ }
+
+ */
+
+
+
+
+
