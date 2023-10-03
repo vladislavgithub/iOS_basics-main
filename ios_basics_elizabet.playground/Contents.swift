@@ -1457,3 +1457,277 @@ print(type(of: arryElCount))
  */
 
 
+//  Оператор досрочного выхода guard
+
+/*
+ Оператор guard называется оператором досрочного выхода. Подобно операто- ру if, он проверяет истинность переданного ему условия. Отличие его в том, что он выполняет код в теле оператора только в том случае, если условие вернуло значение false.
+ var users = ["admin", "alex", "grace", "liza"]
+ var currentUser = users.removeFirst()
+ repeat {
+     print(users.startIndex)
+     currentUser = users.removeFirst()
+ } while currentUser != "grace"
+ print(users.count)
+ 
+ 
+ 
+ var swimer = ["июнь", "июль", "август"]
+ var theman = ""
+ for index in 0..<swimer.count{
+     theman += swimer[index] + " "
+ }
+ print (" Летом три месяца: \(theman)")
+
+ 
+ let name = "Simon"
+ switch name {
+ case "Simon":
+     fallthrough
+ case "Malcom", "Zoe", "Kaylee":
+     print("Crew")
+ default:
+     print("Not crew")
+ }
+ 
+ var users = ["admin", "alex", "grace", "liza"]
+ var currentUser = users.removeFirst()
+ repeat {
+     print(users.startIndex)
+     currentUser = users.removeFirst()
+ } while currentUser != "grace"
+ print(users.count)
+
+ 
+                                                        Практика
+Задание 1
+ Напишите код, который будет выводить на консоль персонализированное приветствие пользователю в зависимости от его имени.
+ Пусть в константе name хранится имя пользователя. Используя операторы управления (условия if и ветвления switch) реализуйте различный вывод на консоль в зависимости от значения в константе name
+ Покажите варианты решения с использованием switch и if. Определите вывод на консоль для трех произвольных имен, а так же в блоке «во всех остальных случаях» (default и else).
+ 
+ Решение:
+ 
+ //let nameUser = "Stanislav"
+ //switch nameUser {
+ //case "Vladislav":
+ //    print("Welcom \(nameUser)")
+ //case "Stanislav":
+ //    print("Welcom moder \(nameUser)")
+ //case "Saha":
+ //    print("Welcom men \(nameUser)")
+ //default:
+ //    print("Welcom people")
+ //}
+
+ //
+ //let nameUser = "Stanislav"
+ //nameUser == "Stanislav" ? print("Welcom \(nameUser)") : print("Welcom people")
+ //
+
+ let nameUser = "Stanislav"
+ if nameUser == "Stanislav"{
+     print("Welcom \(nameUser)")
+ }else if nameUser == "Vladislav"{
+     print("Welcom moder \(nameUser)")
+ }else if nameUser == "Saha"{
+     print("Welcom men \(nameUser)")
+ }else{
+     print("Welcom people")
+ }
+     
+                                                    Задание 2
+ У вас есть логическая переменная open, которая может принять одно из двух доступных значений (true или false) var open = true или var open = false
+
+ Вам необходимо создать новую переменную типа String и инициализировать ей строковое значение:
+ — если open равно true, то инициализировать "открыто"
+ — если open равно false, то инициализировать "закрыто"
+
+ var open = Bool.random()
+
+ //if open == true{
+ //    print("дверь открыта")
+ //}else{
+ //    print("дверь закрыта")
+ //}
+
+ //open == true ? print("дверь открыта") : print("дверь закрыта")
+
+ //switch open{
+ //case true:
+ //    print("дверь открыта")
+ //case false:
+ //    print("дверь закрыта")
+ //}
+ 
+                                                    Задание 3
+ Вам даны три переменные var1, var2 и var3 целочисленного типа Int
+ Составьте программу, в конце которой в константе result будет находиться наибольшее из трех целочисленных значений.
+ 
+ var var1 = 3
+ var var2 = 4
+ var var3 = 5
+
+ //var tmp = 0
+ //tmp = var1 > var2 ? var1 : var2
+ //tmp = tmp > var3 ? tmp : var3
+ //let result = tmp
+ //print(result)
+
+ //let result = [var1, var2, var3].max()
+ //print(result)
+
+ var tmp = 0
+ if var1 > var2 && var1 > var3{
+     tmp = var1
+ }else if var2 > var1 && var2 > var3{
+     tmp = var2
+ }else{
+     tmp = var3
+ }
+ let reault = tmp
+
+                                                Задание 4
+ 
+ Вы имеете три переменные-кортежа, содержащие координаты точек
+ Напишите программу, которая определяет, может ли существовать треугольник с заданными координатами вершин
+ //переменные с координатами
+ var point1 = (-100,1)
+ var point2 = (10,2)
+ var point3 = (6,12)
+ //определяем длину отрезков
+ var line1 = sqrt(
+     pow(Double(point2.0 - point1.0), 2) +
+     pow(Double(point2.1 - point1.1), 2)
+ )
+ var line2 = sqrt(
+     pow(Double(point2.0 - point3.0), 2) +
+     pow(Double(point2.1 - point3.1), 2)
+ )
+ var line3 = sqrt(
+     pow(Double(point1.0 - point3.0), 2) +
+     pow(Double(point1.1 - point3.1), 2)
+ )
+ if line1+line2>line3 {
+     print("Такой треугольник существует")
+ }else{
+     print("Такой треугольник не существует")
+ }
+
+ var (a, b, c): ((Double,Double), (Double,Double), (Double, Double)) = ((1, 1), (1, 3), (3, 1))
+ // Вычислим длины сторон
+ let aB = sqrt ((pow(b.0-a.0, 2)) + (pow(b.1-a.1, 2)))
+ let aC = sqrt ((pow(c.0-a.0, 2)) + (pow(c.1-a.1, 2)))
+ let bC = sqrt ((pow(c.0-b.0, 2)) + (pow(c.1-b.1, 2)))
+ // Сравниваем грани
+ var faceBc = (aB + aC) > bC
+ var faceAc = (aB + bC) > aC
+ var faceAb = (aC + bC) > aB
+ // Треугольник существует только тогда, когда сумма длин любых двух его сторон больше длины третьей
+ if faceBc && faceAc && faceAb {
+     print("True triangle")
+ } else {
+     print("False triangle")
+ }
+                                                    Задание 5
+ 
+ Переменная lang может принимать 2 значения: "ru", "en". Если она имеет значение "ru", то в переменную days запишите массив дней недели на русском языке, а если имеет значение "en" – то на английском
+ Покажите решение задачи через конструкцию switch-case
+ 
+ 
+ var lang = "eg"
+ var days: [String] = []
+ switch lang{
+ case "ru":
+     days = [ "пн", "вт", "ср", "чт", "пт", "сб","вс" ]
+     print(days)
+ case "eg":
+     days = [ "pn", "vt", "sr", "cht", "pt", "sb","vs" ]
+     print(days)
+ default:
+     break
+ }
+
+                                                     Задание 6
+
+ Основано на предыдущем задании
+ У вас появилась дополнительная переменная chars, которая может принять два значения "up" и "down"
+ Доработайте конструкцию switch-case таким образом, чтобы в зависимости от значения chars массив заполнялся большими или маленькими символами
+ 
+ 
+ var lang = "ru"  // "ru", "en"
+ var chars = "up" // "up" и "down"
+ var days: [String] = []
+ switch (lang,chars){
+ case ("ru","down"):
+     days = [ "пн", "вт", "ср", "чт", "пт", "сб","вс" ]
+     print(days)
+ case ("ru","up"):
+     days = [ "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ","ВС" ]
+     print(days)
+ case ("eg","down"):
+     days = [ "pn", "vt", "sr", "cht", "pt", "sb","vs" ]
+     print(days)
+ case ("eg","up"):
+     days = [ "PN", "VT", "SR", "CHT", "PT", "SB","VS" ]
+     print(days)
+ default:
+     break
+ }
+ 
+ 
+ var lang = "ru"
+ var chars = "up"
+ var days: [String] = []
+ switch lang {
+    case "ru" where chars == "down":
+      days = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"];
+      break;
+    case "ru" where chars == "up":
+      days = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"];
+      break;
+    case "en" where chars == "down":
+      days = ["mn", "ts", "wd", "th", "fr", "st", "sn"];
+      break;
+    case "en" where chars == "up":
+      days = ["MN", "TS", "WD", "TH", "FR", "ST", "SN"];
+      break;
+    default:
+      break;
+ }
+ days
+ 
+                                                    Задание 7
+
+ 1) Определите псевдоним Operation типу кортежа, содержащему три элемента со следующими именами: operandOne, operandTwo, operation.
+ Первые два — это числа с плавающей точкой. Они будут содержать операнды для выполнения операции.
+ Третий элемент — строковое значение типа Character. Оно будет содержать указатель на проводимую операцию. Всего может быть четыре вида операций: +, -, *, /.
+ 2) Создайте константу типа Operation и инициализируйте ей произвольное значение, к примеру (3.1, 33, "+")
+ 3) Используя конструкцию switch-case вычислите значение операции, указанной в элементе для операндов operandOne и operandTwo. Оператор switch должен корректно отрабатывать любую из четырех операций.
+ 4) Проверьте правильность работы конструкции по для следующих операций:
+
+ (3.1, 33, "+")
+ (24.9, 22.32, "*")
+ (11.3, 5, "/")
+ (5, 2.5, "-")
+
+ //1
+ typealias Operation = (operandOne: Float, operandTwo:Float, operation:Character)
+ //2
+ let sbor:Operation = (5, 0, "/")
+ switch sbor.operation{
+ case "+":
+     print(sbor.operandOne + sbor.operandTwo)
+ case "-":
+     print(sbor.operandOne - sbor.operandTwo)
+ case "/" where (sbor.operandOne != 0 || sbor.operandTwo != 0):
+     print(sbor.operandOne / sbor.operandTwo)
+ case "*":
+     print(sbor.operandOne * sbor.operandTwo)
+ default:
+     break
+ }
+
+*/
+
+
+
+
