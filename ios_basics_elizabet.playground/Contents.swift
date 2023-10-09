@@ -2061,5 +2061,255 @@ let x1 = Int("12")
  
  */
 
+/*
+                                                        Функции
+ 
+ func имяФункции (входные_параметры) -> ТипВозвращаемогоЗначения {
+     // тело функции
+ }
+ имяФункции — имя объявляемой функции, по которому она сможет быть вызвана. К функциям применимы те же правила именования, что и к параметрам.
+ входные параметры — список входных параметров функции с указанием их имен и типов. ТипВозвращаемогоЗначения — тип данных значения, возвращаемого функцией.
+ Если функция ничего не возвращает, то данный элемент может быть опущен. Объявление функции начинается с ключевого слова func.
+ За func следует имя создаваемой функции. Оно используется при каждом ее вызове в вашем коде и должно быть записано в нижнем верблюжьем регистре. Например:
+      func myFirstFunc
+ 
+ 
+ 
+ func printMessage() {
+     print ("Message done")
+     
+ }
+
+ printMessage()
+ printMessage()
+
+
+                                        Входные параметры и возвращаемое значение
+
+ Входные параметры
+ 
+ func sumTwoInt ( a: Int, b: Int) {
+     print("Result oper - \(a+b)")
+ }
+
+ sumTwoInt(a: 10, b: 20)
+
+                                            Внешние имена входных параметров
+ 
+ 
+ func sumTwoInt (num1 a : Int, num2 b: Int) {
+     print("Result oper - \(a+b)")
+ }
+ sumTwoInt(num1: 10, num2: 12)
+
+ func sumTwoInt(_ a: Int, _ b: Int) {
+     print("Результат операции - \(a+b)")
+ }
+ sumTwoInt(10, 15)
+ 
+ 
+                                            Возвращаемое значение
+
+ func sumTwoInt (_ a:Int, _ b:Int) -> Int{
+     let result = a + b
+     print("Result opr - \(result)")
+     return result
+ }
+ var result = sumTwoInt(10, 12)
+ 
+ func myMessage ( code: Int, message: String) -> String{
+     var  dropMessage = message
+     dropMessage += String(code)
+     return dropMessage
+ }
+ let doneMessage = myMessage(code: 400, message: "How are you, Vladislav?. code message - ")
+ print (doneMessage)
+
+                                                Сквозные параметры
+ 
+ обеспечивает обмен значениями двух внешних параметров.
+ func changeValues( _ a: inout Int, _ b: inout Int) -> Void {
+     let tmp = a
+     a = b
+     b = tmp
+ }
+ var x = 150, y = 200
+ changeValues(&x, &y)
+ x
+ y
+ 
+ 
+                                    Входной параметр с переменным числом значений
+ 
+ func printRequestStripg ( code: Int...) -> Void{
+     var resultCode = " "
+     for codeNew in code{
+         resultCode += String(codeNew) + " "
+     }
+     print ("Give result - \(resultCode)")
+ }
+
+ printRequestStripg(code: 1, 3, 4, 5, 6)
+ printRequestStripg(code: 1, 3, 4, 5)
+
+                                         Кортеж в качестве возвращаемого значения
+ 
+ 
+
+ func printStatusServera ( code: Int) -> ( code: Int , connect: String){
+     let connect: String
+     switch code{
+     case 1...100:
+         connect = "subscribe"
+     case 101...200:
+         connect = "done"
+     default:
+         connect = "weak"
+     }
+     return (code, connect)
+ }
+ let requs = (printStatusServera(code: 200))
+ requs.connect
+ requs.code
+
+ 
+                                    Значение по умолчанию для входного параметра
+ 
+ func returnMessage ( code: Int, massage: String = "Code - ") -> String{
+     var newMessage = " "
+     newMessage += String(code)
+     return newMessage
+ }
+ print(returnMessage(code: 90))
+
+ 
+ func returnMessage ( code:Int, message: String = "output code - ") -> String{
+     return (message + String(code))
+ }
+ returnMessage(code: 90)
+
+                                                Функциональный тип
+                                            Простой функциональный тип
+ 
+ func printErrorMessage (){
+     print("Error Message")
+ }
+ 
+ 
+                                Функция в качестве входного и возвращаемого значений
+ 
+ // функция вывода текста на консоль
+ func printText() {
+     print("Функция вызвана")
+ }
+ // функция, которая возвращает функцию
+ func returnPrintTextFunction() -> () -> Void {
+     return printText
+ }
+ print("шаг 1")
+ let newFunctionInLet = returnPrintTextFunction()
+ print("шаг 2")
+ newFunctionInLet()
+ print("шаг 3")
+ 
+                                        Входное значение функционального типа
+ 
+ // функция генерации случайного массива банкнот
+ //func generateWallet(walletLength: Int) -> [Int] {
+ //// существующие типы банкнот
+ //let typesOfBanknotes = [50, 100, 500, 1000, 5000]
+ //  // массив банкнот
+ //  var wallet: [Int] = []
+ //  // цикл генерации массива случайных банкнот
+ //  for _ in 1...walletLength {
+ //      wallet.append( typesOfBanknotes.randomElement()! )
+ //  }
+ //  return wallet
+ //}
+ //// функция подсчета денег в кошельке
+ //func sumWallet(banknotesFunction wallet: (Int) -> [Int], walletLength: Int) -> Int? {
+ //  // вызов переданной функции
+ //  let myWalletArray = wallet( walletLength )
+ //  var sum: Int = 0
+ //  for oneBanknote in myWalletArray {
+ //      sum += oneBanknote
+ //  }
+ //return sum }
+ //// передача функции в функцию
+ //sumWallet(banknotesFunction: generateWallet, walletLength: 20) // 6900
+
+ 
+                                        Возможности функций
+                                        Вложенные функции
+ 
+ 
+ 
+ Функция oneStep(coordinates:stepType:) осуществляет перемещение точки по плоскости. В ней определено несколько вложенных функций, которые вызываются в зависимости от значения параметра stepType. Данный набор функций доступен только внутри родительской функции oneStep(coordinates:stepType:).
+ Входной параметр coordinates является сквозным, поэтому все изменения, про- изводимые в нем, сохраняются и после окончания работы функции.
+
+ func oneStep(coordinates: inout(Int, Int),
+              stopTape: String
+ ) -> Void{
+     func up( coords: inout(Int, Int)){
+         coords = (coords.0+1, coords.1)
+     }
+     func right( coords: inout(Int, Int)){
+         coords = (coords.0, coords.1+1)
+     }
+     func  down( coords: inout(Int, Int)){
+         coords = (coords.0-1, coords.1)
+     }
+     func left( coords: inout(Int, Int)){
+         coords = (coords.0, coords.1-1)
+     }
+     switch stopTape{
+     case "up":
+         up(coords: &coordinates)
+     case "right":
+         right(coords: &coordinates)
+     case "down":
+         down(coords: &coordinates)
+     case "left":
+         down(coords: &coordinates)
+     default:
+         break
+     }
+ }
+ var coordinates = (10, -5)
+ oneStep(coordinates: &coordinates, stopTape: "up")
+ oneStep(coordinates: &coordinates, stopTape: "right")
+ coordinates
+ 
+ 
+ 
+                                    Перегрузка функций
+ 
+ 
+ func say(what: String) -> Void {}
+ func say(what: Int) -> Void {}
+ 
+ func syu() -> String{
+     return "Moscow"
+ }
+ func syu() -> Int{
+     return 1
+ }
+ let resultString: String = syu()
+ let resultInt: Int = syu()
+
+
+                                Рекурсивный вызов функций
+
+ //Функция countdown(firstNum:) отсчитывает числа в сторону понижения, начиная от переданного параметра firstNum и заканчивая нулем. Этот алгоритм реализу- ется рекурсивным вызовом функции.
+ func countdown(firstNum num: Int) -> Void{
+     print(num)
+     if num > 0{
+         countdown(firstNum: num - 1)
+     }
+ }
+ countdown(firstNum: 20)
+ 
+ */
+
 
 
