@@ -2311,5 +2311,485 @@ let x1 = Int("12")
  
  */
 
+/*
+                                    Практика функции
+ 
+ 
+ 
+ func fizzBuzz(input: Int) -> String{
+     var returnValue: String = "The result is "
+     switch (input % 3 == 0, input % 5 == 0) {
+     case (true, false):
+         returnValue += "Fizz"
+     case (false, true):
+         returnValue += "Buzz"
+     case (true, true):
+         returnValue += "FizzBuzz"
+     case (false, false):
+         returnValue += String(input)
+     }
+     return returnValue
+ }
+ print(fizzBuzz(input: 15))
+
+
+ func sayHello(to name: String) -> String {
+     return "Howdy, \(name)!"
+ }
+
+ print("\(sayHello(to: "Jayne"))")
+
+
+ func shareWinnings(people: Int, fairly: Bool) -> String {
+     var output: String = "We're going to split this...\n"
+     if fairly {
+         output += "Everyone gets 1/\(people)"
+     } else {
+         output += "I get half because I deserve it.\n"
+         output += "Everyone else can split the remainder."
+     }
+     return output
+ }
+ print(shareWinnings(people: 6, fairly: true))
+
+
+ func mult(_ a: Double, _ b: Double) -> Double {
+  a * b
+ }
+
+
+
+ func sum(numbers: Int...) -> Int {
+     var result = 0
+     for number in numbers {
+         result += number
+     }
+     return result
+ }
+ let resultOfFunction = sum(numbers: 1, 2 ,3 ,4 ,5)
+
+ 
+ 
+ 
+ 
+ // Разработайте функцию, которая принимает на вход значение типа Bool, преобразует его в строку и возвращает. То есть передав true типа Bool должно вернуться "true" типа String, то же самое и для false.
+ 
+ version 0
+ 
+ func boolOperashen(doString: Bool) -> String{
+     if doString == true{
+         print(true)
+     }else{
+         print(false)
+     }
+     return String(doString)
+ }
+ boolOperashen(doString: false)
+
+ version 1
+ 
+ func booleanToString( _ b: Bool) -> String {
+ return String(b)
+}
+booleanToString(true)
+ 
+ 
+ 
+ 
+ 
+ 
+ //Напишите функцию, которая принимает на вход массив с элементами типа Int, а возвращает целое число — сумму всех положительных элементов переданного массива.
+ //К примеру для массива [1,-2,3,4,-5] должно быть возвращено 1+3+4 = 8
+
+ version 0
+ 
+ func relatedInt (arryInt: [Int]) -> Int{
+    var sumarry = 0
+     for elementArry in arryInt{
+         if elementArry > 0{
+             sumarry += elementArry
+         }
+     }
+     return sumarry
+ }
+ relatedInt(arryInt: [1,-2,3,4,-5])
+ 
+ version 1
+ 
+ func sumOfPositives(_ a: [Int] ) -> Int{
+     var result = 0
+     for i in a {
+         // тернарная форма оператора ветвления позволяет сократить код
+         // вы оожете использовать сокращенный или стандартный синтаксис
+         result += i>0 ? i : 0
+     }
+     return result
+ }
+ //внутри цикла for применяется терная
+ sumOfPositives([1,-2,3,4,-5]) //8
+
+ 
+ 
+ 
+ 
+ Напишите функцию, которая принимает на вход массив типа [Int] и, в случае, если количество элементов > 0, то возвращает целое число — произведение всех элементов переданной коллекции. Если количество элементов = 0, то возвращается 0.
+ Пример:
+ [1,2,3,4] -> 1 * 2 * 3 * 4 = 24
+ 
+version 0
+ 
+ func relatedInt (_ a: [Int]) -> Int{
+     var result = 0
+     if a.count > 0 {
+         result = 1
+         for i in a {
+             result *= i
+         }
+     }
+     return result
+ }
+ relatedInt( [1,2,3,4])
+ 
+ 
+ 
+ 
+ Используя перегрузку (overloading) создайте две одноименные функции, которые могут принимать два однотипных параметра (Int или Double) и возвращают их произведение
+ Пример:
+ (4, 5) -> 4 * 5 = 20
+ (4.1, 5.2) -> 4.1 * 5.2 = 21.32
+ 
+ version 0
+ 
+ func composition( _ a:Int,_ b:Int) -> Int{
+    return a * b
+ }
+ func composition(_ a:Double,_ b:Double) -> Double{
+     return a * b
+ }
+ let c1:Int = composition( 15, 12)
+ let c2:Double = composition( 12.5, 13.8)
+ 
+ 
+ 
+ 
+ 
+ 
+ Напишите функцию, которая принимает на вход целое число и возвращает противоположное ему целое число
+ Пример:
+ -12 -> 12
+ 32 -> -32
+ 
+ //version 0
+ 
+ func inversion (a: Int) -> Int{
+     var b = a > 0 ? -a : -a
+     return b
+ }
+ print (inversion(a: -10))
+ 
+ version 1
+ 
+ func inversion (a: Int) -> Int{
+     return -a
+ }
+ 
+ 
+ 
+ 
+ 
+
+ Напишите функцию, которая производит подсчет стоимости аренды квартиры с учетом следующих условий:
+ 1. Один день аренды стоит 850 рублей
+ 2. При аренде от 3 дней вы получаете скидку в размере 550 рублей от общей суммы
+ 3. При аренде от 7 дней вы получаете скидку в размере 1620 рублей от общей суммы
+ Функция должна принимать на вход количество дней, а возвращать итоговую сумму.
+ Пример
+ funcName(5) -> 3700
+ funcName(9) -> 6030
+ 
+ version 0
+ 
+ func rent ( day: Int) -> Int{
+     var sum = 0
+     var days = 850
+     switch day{
+     case 1...2:
+         sum = day * days
+     case 3...6:
+         sum = day * days - 550
+     case 7...:
+         sum = day * days - 1620
+     default:
+         print("Error")
+     }
+     return sum
+ }
+ print (rent(day: 9))
+ 
+ varsion 1
+ 
+ func rent (_ days: Int) -> Int{
+     let dayPrice = 850
+     var result = days * dayPrice
+     if days >= 7 {
+         result -= 1620
+     }else if days >= 3 {
+         result -= 550
+     }
+     return result
+ }
+
+ print(rent(5))
+ 
+ version 2
+ 
+ func rent (_ days: Int) -> Int{
+     let dayPrice = 850
+     var result = days * dayPrice
+     if days >= 7 {
+         result -= 1620
+     }else if days >= 3 {
+         result -= 550
+     }
+     return result
+ }
+
+ print(rent(9))
+
+
+ 
+ 
+ 
+ 
+ Напишите функцию, которая принимает на вход массив типа [Int] и значение Int, проверяет содержится ли целочисленный элемент в массиве и возвращает true или false в зависимости от результата проверки
+ Покажите не менее двух способов решения данной задачи
+ Пример:
+ funcName([1,2,3], 4) -> false
+ funcName([2,3,4], 3) -> true
+ 
+vrsion 0
+ 
+ func funcName(_ array: [Int], _ num: Int) -> Bool{
+     if let _ = array.firstIndex(of: num){
+         return true
+     }else{
+         return false
+     }
+ }
+ funcName([2,3,4], 3)
+
+ 
+version 1
+ 
+ 
+ func funcName(_ array: [Int], _ num: Int) -> Bool{
+     for i in array{
+         if i == num{
+             return true
+         }
+     }
+     return false
+ }
+ funcName([1,2,3], 4)
+ funcName([2,3,4], 3)
+ 
+ version 2
+ 
+ func funcName(_ array: [Int], _ num: Int) -> Bool{
+     return array.contains(num)
+ }
+
+ 
+ 
+ 
+ 
+ 
+ Напишите функцию, которая повторяет заданную строку N раз.
+ Функция принимает на вход значение типа String (строку для повторений) и значение типа Int (количество повторений) и возвращает полученный результат.
+ Пример:
+ funcName("Swift", 2) -> "SwiftSwift"
+ funcName("Xcode", 0) -> ""
+ 
+ version 0
+ 
+ func funcName( _ text:String, _ characteristic:Int) -> String{
+     return String(repeating: text, count: characteristic)
+ }
+ funcName("Swift", 3)
+ 
+ version 1
+ 
+ func repeatStr2(_ str: String, _ n: Int) -> String {
+     var result = ""
+     for _ in 0..<n {
+         result += str
+         //так же допустим вариант с
+         //result.append(str)
+     }
+     return result
+ }
+ repeatStr2("Swift", 2) // "Swift"
+ repeatStr2("Xcode", 0) // ""
+  
+ versione 2
+ 
+
+ func repeatStr2(_ str: String, _ n: Int) -> String {
+     var result = " "
+     for _ in 0..<n{
+         result += str
+     }
+     return result
+ }
+ repeatStr2("Swift", 2) // "Swift"
+ repeatStr2("Xcode", 0) // ""
+
+
+ 
+ 
+ 
+ 
+ 
+ Мальчик находится на N-ом этаже в здании. Мама мальчика смотрит в окно на M-ом этаже здания. Мальчик выпускает из рук мячик, он летит вниз, отскакивает на (высота броска) * L, вновь летит вниз, вновь отскакивает на (высота предыдущего отскока) * L и т.д, пока не окончит отскакивать.
+ Реализуйте функцию, которая высчитывает, сколько раз мяч пролетит мимо мамы (вниз и вверх). Функция должна принимать на вход следующие параметры:
+ — высота одного этажа (h > 0)
+ — этаж мальчика (N >= 2)
+ — этаж мамы (M >= 1)
+ — коэффициент отскока (L < 1)
+ 
+ func score (heightFloor h:Float, floorBoy N:Int, floorMom M:Int, koef L:Float) -> Int{
+     var colection = Float(N) * L
+     var count = 1
+     while colection >= Float(M) {
+         colection *= L
+         count += 2
+     }
+     return count
+ }
+ print(score(heightFloor: 10.5, floorBoy: 3, floorMom: 2, koef: 0.75))
+
+ 
+ 
+ 
+ Напишите функцию, которая принимает параметр типа String, а возвращает true (типа Bool) если в строке есть только уникальные символы, и false, если в ней есть хотя бы один повторяющийся символ.
+ 
+
+
+ func primaryText (distinctive:String) -> Bool{
+     // массив, который будет хранить просмотренные символы
+     var userSymbol = [Character]()
+     //перебор всех символов
+     for i in distinctive{
+         if userSymbol.contains(i){
+             return false
+         }
+         userSymbol.append(i)
+     }
+     return true
+ }
+ primaryText(distinctive: "Text")
+ 
+ func checkUniqueSymbols2(text: String) -> Bool {
+     return Set(text).count == text.count
+ }
+
+ 
+ 
+ 
+ 
+ Напишите функцию, которая определяет, состоят ли две переданные в нее строки из одних и тех же символов.
+
+ Пример:
+
+ funcName(in: "abc", and: "bca") // true
+ funcName(in: "abc", and: "bcaa") // false
+ 
+ 
+ version 0
+ //Будем брать каждый символ из первой строки и удалять его первое вхождение из второй. В конце проверим, остались ли символы в
+ func checkSameSymbols(in stringOne: String, and stringTwo: String) -> Bool {
+     var mutableStringTwo = stringTwo
+     for symbol in stringOne {
+         if let firstIndex = mutableStringTwo.firstIndex(of: symbol) {
+             mutableStringTwo.remove(at: firstIndex)
+         } else {
+             return false
+         }
+     }
+     return mutableStringTwo.count == 0
+ }
+ checkSameSymbols(in: "abc", and: "bca")
+ 
+ 
+ version 1
+ 
+ func checkDublicate(in firstWord: String, and secondWord: String) -> Bool {
+ return firstWord.sorted() == secondWord.sorted()
+ }
+
+ checkDublicate(in: "abc", and: "bca") //true
+ checkDublicate(in: "abc", and: "bcaa") //false
+ 
+ 
+ 
+ 
+ Напишите функцию, которая принимает на вход целочисленный диапазон и возвращает из него все простые числа.
+
+ длится на себя и на 1
+ 
+ 
+func getprimeriNamber (from range: ClosedRange<Int>) -> [Int]{
+    var primerNamber = [Int]()
+    for namber in range{
+        for delementer in range{
+            if [0,1].contains(delementer){
+                continue
+            }
+            if  namber % delementer == 0 && namber == delementer {
+                primerNamber.append(namber)
+            }else if namber % delementer == 0 && namber != delementer {
+                break
+            }
+        }
+    }
+    return primerNamber
+}
+print (getprimeriNamber(from: 0...30))
+ 
+ 
+ 
+ Реализуйте функцию pow(Int,Int), которая принимает два целочисленных элемента. Первый указывает на степень второго числа. Результат функции — второй аргумент функции, возведенный в степень (первый аргумент функции).
+
+ Предполагается, что аргументы могут быть только целыми положительными числами.
+
+ 
+ func pow(a: Int, b: Int) -> Int{
+     guard a > 0 else {
+         return 1
+     }
+     var result = 1
+     for _ in 1...a{
+         result *= b
+     }
+     return result
+ }
+ pow(a: 1, b: 2)
+ 
+ func pow(a: Int, b: Int) -> Int{
+     var result = 1
+     if a<0{
+         return 1
+     }else if a>0{
+         for _ in 1...a{
+             result *= b
+         }
+     }
+     return result
+ }
+  pow(a: 10, b: 2)
+
+ 
+ 
+ */
 
 
