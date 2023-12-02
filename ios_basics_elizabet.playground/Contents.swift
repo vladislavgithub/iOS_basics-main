@@ -2789,7 +2789,363 @@ print (getprimeriNamber(from: 0...30))
   pow(a: 10, b: 2)
 
  
+                                        Замыкания (closure)
+ 
+ 
+ // безымянная функция в качестве значения константы
+ let functionInLet = { return true }
+ // вызываем безымянную функцию
+ functionInLet() // true
+ 
+ 
+ // массив с купюрами
+ var wallet = [10,50,100,100,5000,100,50,50,500,100]
+ // функция отбора купюр
+ func hudlanr (wallet: [Int]) -> [Int]{
+     var returnWallet = [Int]()
+     for banknote in wallet{
+         if banknote == 100{
+             returnWallet.append(banknote)
+         }
+     }
+     return returnWallet
+ }
+
+ hudlanr(wallet: wallet)
+ 
+ 
+ func hudlanr (wallet: [Int]) -> [Int]{
+     var recus = [Int]()
+     for banknote in wallet{
+         if banknote >= 1000{
+             recus.append(banknote)
+         }
+         
+     }
+     return recus
+ }
+ hudlanr(wallet: [10,50,100,100,5000,100,50,50,500,100])
+
+ 
+ 
+ 
+ 
+ var wallet = [10,50,100,100,5000,100,50,50,500,100]
+ func hudlanr ( wallet: [Int], closure: (Int) -> Bool) -> [Int]{
+     var returnWallet = [Int]()
+     for bancnote in wallet{
+         if closure(bancnote){
+             returnWallet.append(bancnote)
+         }
+     }
+     return returnWallet
+ }
+
+ func compre100(bancnone: Int) -> Bool{
+     return bancnone == 100
+ }
+ func compareMore1000(bancnote: Int) -> Bool{
+     return bancnote >= 1000
+ }
+
+ let resultWalletOne = hudlanr(wallet: wallet, closure: compre100)
+ let resultWalletTwo = hudlanr(wallet: wallet, closure: compareMore1000)
+
+ 
+ 
+ // отбор купюр достоинством выше 1000 рублей
+ // аналог передачи compareMore1000
+ handle(wallet: wallet, closure: { (banknote: Int) -> Bool in
+     return banknote >= 1000
+ })
+ // отбор купюр достоинством 100 рублей
+ // аналог передачи compare100
+ handle(wallet: wallet, closure: { (banknote: Int) -> Bool in
+     return banknote == 100
+ })
+ 
+                                                Пропуск указания типов
+
+ 
+ hudlanr(wallet: wallet, closure: { banknote in
+     return banknote >= 1000
+ })
+ 
+                                            Неявное возвращение значения
+ 
+ handle(wallet: wallet, closure: { banknote in banknote >= 1000})
+ 
+ 
+                                            Сокращенные имена параметров
+
+ handle(wallet: wallet, closure: {$0>=1000})
+ 
+                                                Вынос замыкания за скобки
+ 
+ handle(wallet: wallet){ $0 >= 1000 }
+ 
+ handle(wallet: wallet) { banknote in
+     for number in Array(arrayLiteral: 100,500) {
+         if number == banknote {
+ return true }
+ }
+     return false
+ }
+
+ 
+ let successBanknotes = handle(wallet: wallet) { [100,500].contains($0) }
+      successBanknotes // [100, 100, 100, 500, 100]
+ 
+ 
+ 
+                                    Вынос нескольких замыканий за скобки
+ 
+ 
+ func networkQuery(url: String, success: (String) -> (), error: (Int) -> ()) {
+     // код запроса на сервер
+ }
+
+ // классический вариант
+ networkQuery(url: "https://weather.com", success: { data in }, error:
+                    {errorCode in })
+ // новый вариант
+ networkQuery(url: "https://weather.com") { data in
+     // ...
+ } error: { errorCode in
+ // ... }
+
+ 
+ 
+                                        Безымянные функции в параметрах
+ 
+ let closure: () -> Void = {
+     print("Замыкающие выражения")
+ }
+ closure()
+
+ // передача в функцию строкового значения
+ let closurePrint: (String) -> Void = { text in
+     print(text)
+ }
+ closurePrint("Text")
+
+ 
+ var sum: ( _ numOne: Int, _ numTwo: Int) -> Int = {
+     $0 + $1
+ }
+ sum(10, 20)
+ 
+ 
+                            Пример использования замыканий при сортировке массива
+ 
+ 
+ let array = [1,44,81,4,277,50,101,51,8]
+ var sortedArry = array.sorted(by: {(first:Int, second:Int) -> Bool in
+     return first < second
+ })
+ sortedArry
+
+
+ let array = [1,44,81,4,277,50,101,51,8]
+ var sortedArray = array.sorted(by: <)
+ var sortedArray = array.sorted(by: { $0 < $1 })
+
+ 
+                                            Захват переменных
+                                        Синтаксис захвата переменных
+ 
+ 
+ var a = 1
+ var b = 2
+ let closureSum: () -> Int = {
+     a + b
+ }
+ closureSum()// 3
+ a = 3
+ b = 5
+ closureSum() // 8
+
+ 
+                                            Захват вложенной функцией
+ 
+ func makeIncrement(forIncrement amount:Int) -> () -> Int {
+     var runnningTotal = 0
+     func increment() -> Int{
+         runnningTotal += amount
+         return runnningTotal
+     }
+     return increment
+ }
+
+ var incrementMeTen = makeIncrement(forIncrement: 10)
+ incrementMeTen()// 10
+ incrementMeTen()// 20
+
+                                                 Замыкания передаются по ссылке
+
+ var  incrementByFive = makeIncrement(forIncrement: 5)
+ var  copyIncrementByFive =  incrementByFive
+
+ incrementByFive() // 5
+ copyIncrementByFive() // 10
+ incrementByFive() // 15
+ 
+ 
+                                                Автозамыкания
+ 
+ 
+ var name = [ "Hella", "Stella", "Sveta"]
+ func nameGerls (nextName: String){
+     print(nextName)
+ }
+ print(nameGerls(nextName: name.remove(at: 1)))
+
+                                        Выходящие (сбегающие) замыкания
+ 
+ 
  
  */
 
 
+/*
+let gretin = {
+    print ("Hello wold!")
+}
+gretin()
+
+let creatUserMessage = { (user: String?, message:String) in
+    if let user = user{
+        print("New creat user and message: \(user), \(message) ")
+    }else{
+        print("Don't creat users, text message: \(message)")
+    }
+}
+creatUserMessage( nil , "Hello, how are you?")
+
+let sum = { (x: Int, y: Int) -> Int in
+    let sum = x + y
+    return sum
+}
+sum(1, 3)
+
+func operation ( _ a : Int, _ b: Int, _ action: (Int, Int) -> Int){
+    let result = action(a, b)
+    print(result)
+}
+operation(15, 12) { a, b in
+    a * b
+}
+operation(15, 12, sum)
+
+
+let area = {(lenght: Double, width: Double) -> Double in
+    return lenght * width
+}
+let perimetr = {(lenght: Double, width: Double) -> Double in
+    let perimetr = (lenght * 2) + (width * 2)
+    return perimetr
+    
+}
+
+func rectangl(_ a: Double, _ b: Double, _ action: (Double, Double) -> Double) -> Double {
+    let result2 = action(a, b)
+    return result2
+}
+rectangl(10, 15.3, area)
+*/
+
+/*
+                                            Ппактика
+ 1) три замыкания
+ 2) 1 замыкание: вычислякт может ли первое число поделиться нацело на второе
+ 3) 2. выч имеется ли общий делитель
+ 4) 3. четная суммы чисел
+ 
+
+ if true{
+     let slovo = { (bigslovo:String, smallslovo:String) -> Bool in
+         let  bigWord = bigslovo.lowercased()
+         let  smallslova = smallslovo.lowercased()
+         
+         var
+ }
+     
+     
+     
+     
+     
+
+     
+     
+     
+     
+ }
+
+ 
+if true{
+    let isDivite = {(num1:Int, num2:Int) -> Bool in num1 % num2 == 0}
+        let isHaveCommandDevayder = {(num1:Int, num2:Int) -> Bool in
+            let max = [num1, num2].max()!
+            let min = [num1, num2].max()!
+            for num in 2...min {
+                if  num1 % num == 0  && num2 % num == 0 {return true}
+            }
+            return false
+        }
+    let isSumOmdd = {(num1:Int, num2:Int) -> Bool in  (num2 + num1) % 2 == 0 }
+    
+    func twoNumsCheck( _ n1: Int,
+                       _ n2: Int,
+                       action: (Int, Int) -> Bool) -> Bool{
+        return action(n1, n2)
+    }
+    twoNumsCheck(8, 2, action: isDivite)
+    twoNumsCheck(8, 2, action: isSumOmdd)
+    twoNumsCheck(8, 2, action: isHaveCommandDevayder)
+}
+
+
+
+// составить замыкание для поиска четырехзначных чисел, которык 133 остаток 125, 134 - 111
+
+
+if true{
+    let closure = { () -> ([Int]) in
+        var nums = [Int]()
+        for num in 1000...9999{
+            if num % 133 == 125 && num % 134 == 111 { nums.append(num) }
+        }
+        return nums
+    }
+    print(closure())
+
+}
+
+*/
+if true {
+    
+    let checkWorld = { (big:String , small:String) -> Bool in
+        
+        let bigword = big.lowercased()
+        let small = small.lowercased()
+        
+        var chars = [Character]()
+        big.forEach {char in
+            chars.append(char)
+        }
+        for char in small {
+            if !chars.contains(char){
+                return false
+            }else{
+                var i = 0
+                while chars[i] != char {
+                    i += 1
+                }
+                chars.remove(at: i)
+            }
+        }
+        return true
+    }
+
+    checkWorld( "маша", "амша")
+}
